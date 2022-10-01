@@ -1,0 +1,9 @@
+.app-sidebar-container {
+    border-radius: inherit;
+    background-color: antiquewhite;
+    min-height: calc(85 * 100vh / 100);
+
+    .app-sidebar {
+        background-color: #ddd !important;
+    }
+}
