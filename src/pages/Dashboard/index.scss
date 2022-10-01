@@ -1,0 +1,14 @@
+.app-container {
+    position: relative;
+    height: 100vh;
+
+    .app-dashboard {
+        position: fixed;
+        top: 14%;
+        margin: auto;
+        border-radius: 40px;
+        background-color: #fff;
+        min-height: 85%;
+        max-width: 85%;
+    }
+}

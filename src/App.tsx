@@ -1,10 +1,12 @@
-function App() {
+// Top level imports
+import { ReactElement } from 'react';
+
+// Pages Components
+import Dashboard from './pages/Dashboard';
+
+function App(): ReactElement {
   return (
-    <div className="App">
-      <header className="App-header">
-        Contact App
-      </header>
-    </div>
+    <Dashboard />
   );
 }
 
