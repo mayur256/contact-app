@@ -1,0 +1,12 @@
+/* Global variables */
+$base-color: #f7f7f7;
+
+* {
+   box-sizing: border-box; // includes padding + margin in total size
+}
+
+body {
+   background-image: url('./assets/app-bg.jpg');
+   background-size: 100% 90vh;
+   background-repeat: no-repeat;
+}
