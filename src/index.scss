@@ -10,3 +10,17 @@ body {
    background-size: 100% 90vh;
    background-repeat: no-repeat;
 }
+
+.no-padding {
+   padding: 0 !important;
+}
+
+.no-paddingX {
+   padding-left: 0 !important;
+   padding-right: 0 !important;
+}
+
+.no-paddingY {
+   padding-top: 0 !important;
+   padding-bottom: 0 !important;
+}

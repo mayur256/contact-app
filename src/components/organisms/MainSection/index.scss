@@ -1,0 +1,27 @@
+.main-container {
+    height: 85vh;
+    width: 74.5vw;
+
+    .sort-menu {
+        min-height: 2.5rem !important;
+        max-height: 2.5rem;
+    }
+
+    .sort-field {
+        padding-right: 1.9rem !important;
+    }
+
+    .search-input {
+        max-width: inherit;
+    }
+
+    .table-container {
+        background-color: black;
+        overflow: auto;
+        max-height: calc(100vh * 0.65);
+
+        table {
+            width: 100%;
+        }
+    }
+}
