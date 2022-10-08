@@ -2,7 +2,7 @@
 import { ReactNode, ReactElement } from 'react';
 
 // Semantic UI
-import { Icon, Menu, Sidebar as SemSidebar } from 'semantic-ui-react';
+import { Icon, Menu, Segment, Sidebar as SemSidebar } from 'semantic-ui-react';
 
 // CSS
 import './index.scss';
@@ -10,21 +10,23 @@ import './index.scss';
 // PropTypes definition
 interface IProps {
     contentSection: ReactNode | ReactNode[];
+    visible?: boolean;
 }
 
 // Component definition
 export default function Sidebar({
-    contentSection
+    contentSection,
+    visible = false
 }: IProps): ReactElement {
     return (
-        <SemSidebar.Pushable className='app-sidebar-container'>
+        <SemSidebar.Pushable as={Segment}>
             <SemSidebar
                 as={Menu}
                 icon='labeled'
                 vertical
-                visible={true}
+                visible={visible}
                 width='thin'
-                className='app-sidebar'
+                animation="overlay"
             >
                 <Menu.Item as='a'>
                     <Icon name='home' />
