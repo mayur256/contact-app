@@ -2,7 +2,7 @@
 import { ReactElement } from 'react';
 
 // Semantic UI
-import { Segment, Header, Grid, Button, Icon, Input, Dropdown, Menu, Table } from 'semantic-ui-react';
+import { Segment, Header, Grid, Button, Icon, Input, Dropdown, Menu, Table, Container } from 'semantic-ui-react';
 
 // CSS
 import './index.scss';
@@ -60,7 +60,7 @@ const TableExamplePagination = (): ReactElement => (
         </Table.Header>
 
         <Table.Body>
-            {Array.from(Array(60).keys()).map((key): ReactElement => (
+            {Array.from(Array(6).keys()).map((key): ReactElement => (
                 <Table.Row key={key}>
                     <Table.Cell>Cell</Table.Cell>
                     <Table.Cell>Cell</Table.Cell>
@@ -97,20 +97,18 @@ export default function MainSection(): ReactElement {
 
     // Main JSX
     return (
-        <Segment basic className='main-container'>
-            {/** App top header section */}
-            <Grid columns={2} stackable>
-                <Grid.Row>
-                    <Grid.Column width={7}>
+        <>
+            <Segment basic className='main-container'>
+                {/** App top header section */}
+                <Grid columns={2} stackable>
+                    <Grid.Column>
                         <Segment basic className='no-padding'>
                             <Header as="h2">Contacts</Header>
                         </Segment>
 
                     </Grid.Column>
 
-                    <Grid.Column
-                        width={7}
-                    >
+                    <Grid.Column className='align-right-md-up'>
                         <Segment className='no-padding' basic>
                             <Button icon color='green'>
                                 <Icon name='add' />&nbsp;
@@ -119,47 +117,45 @@ export default function MainSection(): ReactElement {
                         </Segment>
                         &nbsp;&nbsp;
                     </Grid.Column>
-                </Grid.Row>
-            </Grid>
+                </Grid>
 
-            {/** Filter and sorting section */}
-            <Grid columns={2} stackable>
-                <Grid.Row className='no-padding'>
-                    <Grid.Column width={3}>
-                        <Segment className='no-padding' basic>
-                            <Input
-                                className='search-input'
-                                icon='search'
-                                placeholder='Search...'
-                                size='small'
-                            />
-                        </Segment>
+                {/** Filter and sorting section */}
+                <Grid columns={2} stackable>
+                    <Grid.Column>
+                        <Grid columns={2} stackable>
+
+                            <Grid.Column>
+                                <Segment className='no-padding' basic>
+                                    <Input
+                                        className='search-input'
+                                        icon='search'
+                                        placeholder='Search...'
+                                        size='small'
+                                    />
+                                </Segment>
+                            </Grid.Column>
+
+                            <Grid.Column>
+                                <Segment basic className='no-padding'>
+                                    <DropdownExampleFilter />
+                                </Segment>
+                            </Grid.Column>
+
+                        </Grid>
                     </Grid.Column>
 
-                    <Grid.Column width={3}>
-                        <Segment basic className='no-paddingY'>
-                            <DropdownExampleFilter />
-                        </Segment>
-                        
-                    </Grid.Column>
-
-                    <Grid.Column width={9} className='sort-field'>
-                        <span>Sorting: </span> &nbsp;
+                    <Grid.Column className='align-right-md-up'>
+                        <code>Sorting: </code> &nbsp;
                         <DropdownExampleSort />
                     </Grid.Column>
-                </Grid.Row>
-            </Grid>
+                </Grid>
 
-            {/** Table containing contacts data */}
-            <Grid columns={1} stackable>
-                <Grid.Row>
-                    <Grid.Column>
-                        <Segment basic className='no-padding table-container'>
-                            <TableExamplePagination />
-                       </Segment>
-                    </Grid.Column>
-                </Grid.Row>
-            </Grid>
-        </Segment>
+                {/** Table containing contacts data */}
+            </Segment>
+
+            <Container>
+                <TableExamplePagination />
+            </Container>
+        </>
     );
 };

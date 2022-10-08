@@ -2,7 +2,7 @@
 import { ReactNode, ReactElement } from 'react';
 
 // Semantic UI
-import { Icon, Menu, Segment, Sidebar as SemSidebar } from 'semantic-ui-react';
+import { Icon, Menu,  Sidebar as SemSidebar } from 'semantic-ui-react';
 
 // CSS
 import './index.scss';
@@ -19,7 +19,7 @@ export default function Sidebar({
     visible = false
 }: IProps): ReactElement {
     return (
-        <SemSidebar.Pushable as={Segment}>
+        <SemSidebar.Pushable>
             <SemSidebar
                 as={Menu}
                 icon='labeled'
