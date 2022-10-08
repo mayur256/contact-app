@@ -92,18 +92,30 @@ const TableExamplePagination = (): ReactElement => (
     </Table>
 )
 
+// Props type definitions
+interface IProps {
+    openSidebar: () => void;
+}
+
 // Component definition
-export default function MainSection(): ReactElement {
+export default function MainSection({ openSidebar }: IProps): ReactElement {
 
     // Main JSX
     return (
         <>
-            <Segment basic className='main-container'>
+            <Segment basic>
                 {/** App top header section */}
                 <Grid columns={2} stackable>
                     <Grid.Column>
-                        <Segment basic className='no-padding'>
-                            <Header as="h2">Contacts</Header>
+                        <Segment basic className='no-paddingX'>
+                            <Header as="h2">
+                                <Icon
+                                    name='sidebar'
+                                    className='sidebar-trigger'
+                                    title='Open Sidebar'
+                                    onClick={openSidebar}
+                                /> Contacts
+                            </Header>
                         </Segment>
 
                     </Grid.Column>

@@ -11,12 +11,14 @@ import './index.scss';
 interface IProps {
     contentSection: ReactNode | ReactNode[];
     visible?: boolean;
+    onHide: () => void
 }
 
 // Component definition
 export default function Sidebar({
     contentSection,
-    visible = false
+    visible = false,
+    onHide
 }: IProps): ReactElement {
     return (
         <SemSidebar.Pushable>
@@ -27,6 +29,7 @@ export default function Sidebar({
                 visible={visible}
                 width='thin'
                 animation="overlay"
+                onHide={onHide}
             >
                 <Menu.Item as='a'>
                     <Icon name='home' />
@@ -42,7 +45,7 @@ export default function Sidebar({
                 </Menu.Item>
             </SemSidebar>
 
-            <SemSidebar.Pusher>
+            <SemSidebar.Pusher dimmed={visible}>
                 {contentSection}
             </SemSidebar.Pusher>
         </SemSidebar.Pushable>
