@@ -1,6 +1,11 @@
 .app-container {
-    position: relative;
+    position: absolute;
     background-color: #fff;
     border-radius: 5%;
     height: 90vh;
+    top: 7vh;
+
+    .pushable {
+        border-radius: inherit;
+    }
 }

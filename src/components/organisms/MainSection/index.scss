@@ -1,3 +1,4 @@
+
 .sort-menu {
     min-height: 2.5rem !important;
     max-height: 2.5rem;
@@ -15,6 +16,12 @@
     table {
         width: 100%;
     }
+}
+
+.sidebar-trigger {
+    font-size: inherit !important;
+    cursor: pointer;
+    vertical-align: unset !important;
 }
 
 @media only screen and (min-width: 760px) {
