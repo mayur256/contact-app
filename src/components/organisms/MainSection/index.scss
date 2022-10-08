@@ -1,3 +1,4 @@
+$device-small-breakpoint: 760px;
 
 .sort-menu {
     min-height: 2.5rem !important;
@@ -9,12 +10,19 @@
 }
 
 .table-container {
-    background-color: black;
     overflow: auto;
-    max-height: calc(100vh * 0.65);
+    max-height: calc(100vh * 0.60);
+    padding: 0;
+    margin:0;
+    
+    thead th{
+        position: sticky;
+        top: -1px;
+    }
 
-    table {
-        width: 100%;
+    tfoot th {
+        position: sticky;
+        bottom: -1px;
     }
 }
 
@@ -24,8 +32,14 @@
     vertical-align: unset !important;
 }
 
-@media only screen and (min-width: 760px) {
+@media only screen and (min-width: $device-small-breakpoint) {
     .align-right-md-up {
         text-align: right;
+    }
+}
+
+@media only screen and (max-width: $device-small-breakpoint){
+    .table-container {
+        max-height: 30vh;
     }
 }

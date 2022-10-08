@@ -60,7 +60,7 @@ const TableExamplePagination = (): ReactElement => (
         </Table.Header>
 
         <Table.Body>
-            {Array.from(Array(6).keys()).map((key): ReactElement => (
+            {Array.from(Array(60).keys()).map((key): ReactElement => (
                 <Table.Row key={key}>
                     <Table.Cell>Cell</Table.Cell>
                     <Table.Cell>Cell</Table.Cell>
@@ -165,7 +165,7 @@ export default function MainSection({ openSidebar }: IProps): ReactElement {
                 {/** Table containing contacts data */}
             </Segment>
 
-            <Container>
+            <Container className='table-container'>
                 <TableExamplePagination />
             </Container>
         </>
