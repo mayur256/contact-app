@@ -28,7 +28,7 @@ export default function Dashboard(): ReactElement {
                 />
             </Grid.Column> 
 
-            <Grid.Column>
+            <Grid.Column className='app-container no-paddingX'>
                 <Sidebar
                     visible={visible}
                     contentSection={<MainSection />}
