@@ -1,8 +1,8 @@
 // Top level imports
-import { ReactElement } from 'react';
+import { ReactElement, useState } from 'react';
 
 // Semantic UI lib
-// import { Grid } from 'semantic-ui-react';
+import { Grid, Checkbox } from 'semantic-ui-react';
 
 // Atoms / Molecules / Organisms
 import Sidebar from '@/components/organisms/Sidebar';
@@ -11,15 +11,30 @@ import MainSection from '@/components/organisms/MainSection';
 // CSS
 import './index.scss';
 
+
 // Component definition
 export default function Dashboard(): ReactElement {
+    // state declarations
+    const [visible, setVisible] = useState<boolean>(false);
+
+    // Main JSX
     return (
-        <div className='app-container'>
-            <div className='app-dashboard'>
+        <Grid container columns={1}>
+            <Grid.Column>
+                <Checkbox
+                    checked={visible}
+                    label={'Visible'}
+                    onChange={(e, data) => setVisible(Boolean(data.checked))}
+                />
+            </Grid.Column> 
+
+            <Grid.Column>
                 <Sidebar
+                    visible={visible}
                     contentSection={<MainSection />}
                 />
-            </div>
-        </div>
+            </Grid.Column>
+        </Grid>
+        
     )
 };
