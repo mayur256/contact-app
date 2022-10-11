@@ -2,7 +2,10 @@
 import { ReactNode, ReactElement } from 'react';
 
 // Semantic UI
-import { Icon, Menu,  Sidebar as SemSidebar } from 'semantic-ui-react';
+import { Icon, Menu, Sidebar as SemSidebar } from 'semantic-ui-react';
+
+// Atoms / Molecules / Organisms
+import Drawer from '../Drawer';
 
 // CSS
 import './index.scss';
@@ -44,6 +47,8 @@ export default function Sidebar({
                     Channels
                 </Menu.Item>
             </SemSidebar>
+
+            <Drawer visible={ visible} />
 
             <SemSidebar.Pusher dimmed={visible}>
                 {contentSection}
