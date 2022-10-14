@@ -1,5 +1,8 @@
 // Top level imports
-import { ReactNode, ReactElement } from 'react';
+import { ReactNode, ReactElement, useContext } from 'react';
+
+// App context 
+import { AppCtx } from '@/AppContext';
 
 // Semantic UI
 import { Icon, Menu, Sidebar as SemSidebar } from 'semantic-ui-react';
@@ -23,6 +26,10 @@ export default function Sidebar({
     visible = false,
     onHide
 }: IProps): ReactElement {
+    // Global app context
+    const appCtx = useContext(AppCtx);
+
+    // Main JSX
     return (
         <SemSidebar.Pushable>
             <SemSidebar
@@ -48,7 +55,7 @@ export default function Sidebar({
                 </Menu.Item>
             </SemSidebar>
 
-            <Drawer visible={ visible} />
+            <Drawer visible={ appCtx?.showDrawer } />
 
             <SemSidebar.Pusher dimmed={visible}>
                 {contentSection}

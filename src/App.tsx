@@ -4,9 +4,15 @@ import { ReactElement } from 'react';
 // Pages Components
 import Dashboard from './pages/Dashboard';
 
+// App Context Provider Component
+import { AppContext } from './AppContext';
+
+// Component definition
 function App(): ReactElement {
   return (
-    <Dashboard />
+    <AppContext>
+      <Dashboard />
+    </AppContext>
   );
 }
 

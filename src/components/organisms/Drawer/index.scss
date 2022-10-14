@@ -1,0 +1,9 @@
+.close-btn {
+    position: absolute;
+    right: 5%;
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.5);
+    }
+}
