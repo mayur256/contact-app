@@ -1,5 +1,8 @@
 // Top level imports
-import { ReactElement } from 'react';
+import { ReactElement, useContext } from 'react';
+
+// App context
+import { AppCtx } from '@/AppContext';
 
 // Semantic UI
 import { Segment, Header, Grid, Button, Icon, Input, Dropdown, Menu, Table, Container } from 'semantic-ui-react';
@@ -99,7 +102,15 @@ interface IProps {
 
 // Component definition
 export default function MainSection({ openSidebar }: IProps): ReactElement {
+    // Global app context
+    const appCtx = useContext(AppCtx);
 
+    /** Handler function - starts */
+    const openDrawer = (): void => {
+        appCtx?.toggleDrawer();
+    }
+
+    /** Handler function - starts */
     // Main JSX
     return (
         <>
@@ -122,7 +133,11 @@ export default function MainSection({ openSidebar }: IProps): ReactElement {
 
                     <Grid.Column className='align-right-md-up'>
                         <Segment className='no-padding' basic>
-                            <Button icon color='green'>
+                            <Button
+                                icon
+                                color='green'
+                                onClick={openDrawer}
+                            >
                                 <Icon name='add' />&nbsp;
                                 New Contact
                             </Button>
@@ -140,7 +155,12 @@ export default function MainSection({ openSidebar }: IProps): ReactElement {
                                 <Segment className='no-padding' basic>
                                     <Input
                                         className='search-input'
-                                        icon='search'
+                                        icon={
+                                            <Icon
+                                                name='search'
+                                                link
+                                            />
+                                        }
                                         placeholder='Search...'
                                         size='small'
                                     />
@@ -157,7 +177,7 @@ export default function MainSection({ openSidebar }: IProps): ReactElement {
                     </Grid.Column>
 
                     <Grid.Column className='align-right-md-up'>
-                        <code>Sorting: </code> &nbsp;
+                        <span>Sorting</span> &nbsp;
                         <DropdownExampleSort />
                     </Grid.Column>
                 </Grid>
