@@ -155,7 +155,12 @@ export default function MainSection({ openSidebar }: IProps): ReactElement {
                                 <Segment className='no-padding' basic>
                                     <Input
                                         className='search-input'
-                                        icon='search'
+                                        icon={
+                                            <Icon
+                                                name='search'
+                                                link
+                                            />
+                                        }
                                         placeholder='Search...'
                                         size='small'
                                     />
@@ -172,7 +177,7 @@ export default function MainSection({ openSidebar }: IProps): ReactElement {
                     </Grid.Column>
 
                     <Grid.Column className='align-right-md-up'>
-                        <code>Sorting: </code> &nbsp;
+                        <span>Sorting</span> &nbsp;
                         <DropdownExampleSort />
                     </Grid.Column>
                 </Grid>

@@ -57,7 +57,9 @@ export default function Sidebar({
 
             <Drawer visible={ appCtx?.showDrawer } />
 
-            <SemSidebar.Pusher dimmed={visible}>
+            <SemSidebar.Pusher
+                dimmed={visible || appCtx?.showDrawer}
+            >
                 {contentSection}
             </SemSidebar.Pusher>
         </SemSidebar.Pushable>
