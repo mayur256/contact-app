@@ -8,7 +8,7 @@ import { AppCtx } from '@/AppContext';
 import { Segment, Header, Grid, Icon, Input, Dropdown, Menu, Table, Container } from 'semantic-ui-react';
 
 // Atoms / Molecules / Organisms
-import Button from '../atoms/Button';
+import Button from '@/components/atoms/Button';
 
 // CSS
 import './index.scss';
