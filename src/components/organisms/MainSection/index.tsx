@@ -5,7 +5,10 @@ import { ReactElement, useContext } from 'react';
 import { AppCtx } from '@/AppContext';
 
 // Semantic UI
-import { Segment, Header, Grid, Button, Icon, Input, Dropdown, Menu, Table, Container } from 'semantic-ui-react';
+import { Segment, Header, Grid, Icon, Input, Dropdown, Menu, Table, Container } from 'semantic-ui-react';
+
+// Atoms / Molecules / Organisms
+import Button from '../atoms/Button';
 
 // CSS
 import './index.scss';
@@ -125,7 +128,8 @@ export default function MainSection({ openSidebar }: IProps): ReactElement {
                                     className='sidebar-trigger'
                                     title='Open Sidebar'
                                     onClick={openSidebar}
-                                /> Contacts
+                                />
+                                Contacts
                             </Header>
                         </Segment>
 
