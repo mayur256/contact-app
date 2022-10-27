@@ -25,3 +25,11 @@ BaseButton.args = {
     color: 'green',
     children: 'Base'
 }
+
+export const ButtonWithIcon = StoryTemplate.bind({});
+ButtonWithIcon.args = {
+    info: true,
+    icon: 'add',
+    content: 'Add',
+    labelPosition: '',
+}
