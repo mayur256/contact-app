@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 
 import { ComponentStory } from '@storybook/react';
 
@@ -10,23 +10,25 @@ export default {
     component: Button
 };
 
+type ButtonStory = ComponentStory<typeof Button>;
+
 // Template for the stories
-const StoryTemplate: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+const StoryTemplate: ButtonStory = (args) => <Button {...args} />;
 
 // Story objects
-export const Primary = StoryTemplate.bind({});
+export const Primary: ButtonStory = StoryTemplate.bind({});
 Primary.args = {
     primary: true,
     content: 'Primary'
 };
 
-export const BaseButton = StoryTemplate.bind({});
+export const BaseButton: ButtonStory = StoryTemplate.bind({});
 BaseButton.args = {
     color: 'green',
     children: 'Base'
 }
 
-export const ButtonWithIcon = StoryTemplate.bind({});
+export const ButtonWithIcon: ButtonStory = StoryTemplate.bind({});
 ButtonWithIcon.args = {
     info: true,
     icon: 'add',
