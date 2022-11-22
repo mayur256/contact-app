@@ -5,13 +5,16 @@ import { ReactElement, useContext } from 'react';
 import { AppCtx } from '@/AppContext';
 
 // Semantic UI
-import { Segment, Header, Grid, Icon, Input, Dropdown, Menu, Table, Container } from 'semantic-ui-react';
+import { Segment, Header, Grid, Icon, Input, Dropdown, Menu, Table, Container, Button as SButton } from 'semantic-ui-react';
 
 // Atoms / Molecules / Organisms
 import Button from '@/components/atoms/Button';
 
 // CSS
 import './index.scss';
+
+// Mock data
+import { mockedPersons } from '@/utilities/mocks';
 
 const DropdownExampleFilter = (): ReactElement => (
     <Dropdown
@@ -58,21 +61,31 @@ const TableExamplePagination = (): ReactElement => (
         <Table.Header>
             <Table.Row>
                 <Table.HeaderCell>Name</Table.HeaderCell>
-                <Table.HeaderCell>Groups</Table.HeaderCell>
                 <Table.HeaderCell>Phone</Table.HeaderCell>
                 <Table.HeaderCell>Mail</Table.HeaderCell>
+                <Table.HeaderCell>Description</Table.HeaderCell>
                 <Table.HeaderCell>Action</Table.HeaderCell>
             </Table.Row>
         </Table.Header>
 
         <Table.Body>
-            {Array.from(Array(60).keys()).map((key): ReactElement => (
-                <Table.Row key={key}>
-                    <Table.Cell>Cell</Table.Cell>
-                    <Table.Cell>Cell</Table.Cell>
-                    <Table.Cell>Cell</Table.Cell>
-                    <Table.Cell>Cell</Table.Cell>
-                    <Table.Cell>Cell</Table.Cell>
+            {mockedPersons.map(({ _id, names, emailAddresses, phoneNumbers }): ReactElement => (
+                <Table.Row key={_id}>
+                    <Table.Cell>{ names[0].displayName }</Table.Cell>
+                    <Table.Cell>{ phoneNumbers[0].value }</Table.Cell>
+                    <Table.Cell>{ emailAddresses[0].value }</Table.Cell>
+                    <Table.Cell>-</Table.Cell>
+                    <Table.Cell>
+                        <SButton.Group size='large'>
+                            <Button icon color='red'>
+                                <Icon name='trash'/>
+                            </Button>
+                            <SButton.Or />
+                            <Button icon color='blue'>
+                                <Icon name='edit' />
+                            </Button>
+                        </SButton.Group>
+                    </Table.Cell>
                 </Table.Row>
             ))}
         </Table.Body>
@@ -185,10 +198,9 @@ export default function MainSection({ openSidebar }: IProps): ReactElement {
                         <DropdownExampleSort />
                     </Grid.Column>
                 </Grid>
-
-                {/** Table containing contacts data */}
             </Segment>
 
+            {/** Table containing contacts data */}
             <Container className='table-container'>
                 <TableExamplePagination />
             </Container>

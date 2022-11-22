@@ -79,7 +79,8 @@
             {
                 "devDependencies": [
                     "**/*.stories.*",
-                    "**/.storybook/**/*.*"
+                    "**/.storybook/**/*.*",
+                    "**/mocks.ts"
                 ],
                 "peerDependencies": true
             }
