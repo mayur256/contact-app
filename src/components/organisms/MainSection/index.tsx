@@ -1,14 +1,15 @@
 // Top level imports
-import { ReactElement, useContext } from 'react';
+import { useState, ReactElement, useContext, SyntheticEvent } from 'react';
 
 // App context
 import { AppCtx } from '@/AppContext';
 
 // Semantic UI
-import { Segment, Header, Grid, Icon, Input, Dropdown, Menu, Table, Container, Button as SButton } from 'semantic-ui-react';
+import { Segment, Header, Grid, Icon, Dropdown, Menu, Table, Container, Button as SButton } from 'semantic-ui-react';
 
 // Atoms / Molecules / Organisms
 import Button from '@/components/atoms/Button';
+import Input from '@/components/atoms/Input';
 
 // CSS
 import './index.scss';
@@ -121,9 +122,16 @@ export default function MainSection({ openSidebar }: IProps): ReactElement {
     // Global app context
     const appCtx = useContext(AppCtx);
 
+    // State definitions
+    const [searchKey, setSearchKey] = useState('');
+
     /** Handler function - starts */
     const openDrawer = (): void => {
         appCtx?.toggleDrawer();
+    }
+
+    const handleSearchKeyChange = (e: SyntheticEvent<HTMLInputElement>): void => {
+        setSearchKey((e.target as HTMLInputElement).value);
     }
 
     /** Handler function - starts */
@@ -171,6 +179,8 @@ export default function MainSection({ openSidebar }: IProps): ReactElement {
                             <Grid.Column>
                                 <Segment className='no-padding' basic>
                                     <Input
+                                        value={searchKey}
+                                        onChange={handleSearchKeyChange}
                                         className='search-input'
                                         icon={
                                             <Icon
