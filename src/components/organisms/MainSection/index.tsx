@@ -5,57 +5,18 @@ import { useState, ReactElement, useContext, SyntheticEvent } from 'react';
 import { AppCtx } from '@/AppContext';
 
 // Semantic UI
-import { Segment, Header, Grid, Icon, Dropdown, Menu, Table, Container, Button as SButton } from 'semantic-ui-react';
+import { Segment, Header, Grid, Icon, Menu, Table, Container, Button as SButton, DropdownProps } from 'semantic-ui-react';
 
 // Atoms / Molecules / Organisms
 import Button from '@/components/atoms/Button';
 import Input from '@/components/atoms/Input';
+import Dropdown, { IDropdownProps } from '@/components/molecules/Dropdown';
 
 // CSS
 import './index.scss';
 
 // Mock data
 import { mockedPersons } from '@/utilities/mocks';
-
-const DropdownExampleFilter = (): ReactElement => (
-    <Dropdown
-        text='Filter'
-        icon='filter'
-        floating
-        labeled
-        button
-        className='icon'
-    >
-        <Dropdown.Menu>
-            <Dropdown.Item
-                label={{ color: 'red', empty: true, circular: true }}
-                text='Important'
-            />
-            <Dropdown.Item
-                label={{ color: 'blue', empty: true, circular: true }}
-                text='Announcement'
-            />
-            <Dropdown.Item
-                label={{ color: 'black', empty: true, circular: true }}
-                text='Discussion'
-            />
-        </Dropdown.Menu>
-    </Dropdown>
-)
-
-const DropdownExampleSort = (): ReactElement => {
-    const options = [
-        { key: 1, text: 'Choice 1', value: 1 },
-        { key: 2, text: 'Choice 2', value: 2 },
-        { key: 3, text: 'Choice 3', value: 3 },
-    ]
-
-    return (
-        <Menu compact className='sort-menu'>
-            <Dropdown text='Dropdown' options={options} simple item />
-        </Menu>
-    )
-}
 
 const TableExamplePagination = (): ReactElement => (
     <Table celled>
@@ -112,6 +73,18 @@ const TableExamplePagination = (): ReactElement => (
     </Table>
 )
 
+// definition for sorting dropdown component
+
+const DropdownExampleSort = ({options, text, onChange}: IDropdownProps): ReactElement => (
+    <Dropdown
+        text={text}
+        options={options}
+        onChange={onChange}
+        simple
+        item
+    />
+);
+
 // Props type definitions
 interface IProps {
     openSidebar: () => void;
@@ -121,9 +94,16 @@ interface IProps {
 export default function MainSection({ openSidebar }: IProps): ReactElement {
     // Global app context
     const appCtx = useContext(AppCtx);
+    // Constants
+    const sortOptions = [
+        { text: 'Name', value: 'name' },
+        { text: 'Phone', value: 'phone' },
+        { text: 'Email', value: 'email' },
+    ];
 
     // State definitions
     const [searchKey, setSearchKey] = useState('');
+    const [sortContactsKey, setSortContactsKey] = useState<{text: string, value: string}>(sortOptions[0]);
 
     /** Handler function - starts */
     const openDrawer = (): void => {
@@ -132,6 +112,13 @@ export default function MainSection({ openSidebar }: IProps): ReactElement {
 
     const handleSearchKeyChange = (e: SyntheticEvent<HTMLInputElement>): void => {
         setSearchKey((e.target as HTMLInputElement).value);
+    }
+
+    const handleSortChange = (event: SyntheticEvent<HTMLElement, Event>, data: DropdownProps): void => {
+        const selectedOption = sortOptions.find((opt) => opt.value === data.value);
+        if (selectedOption) {
+            setSortContactsKey(selectedOption);
+        }
     }
 
     /** Handler function - starts */
@@ -196,7 +183,7 @@ export default function MainSection({ openSidebar }: IProps): ReactElement {
 
                             <Grid.Column>
                                 <Segment basic className='no-padding'>
-                                    <DropdownExampleFilter />
+                                    {/* <DropdownExampleFilter /> */}
                                 </Segment>
                             </Grid.Column>
 
@@ -205,7 +192,11 @@ export default function MainSection({ openSidebar }: IProps): ReactElement {
 
                     <Grid.Column className='align-right-md-up'>
                         <span>Sorting</span> &nbsp;
-                        <DropdownExampleSort />
+                        <DropdownExampleSort
+                            onChange={handleSortChange}
+                            options={sortOptions}
+                            text={sortContactsKey.text}
+                        />
                     </Grid.Column>
                 </Grid>
             </Segment>
