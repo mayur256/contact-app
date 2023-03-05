@@ -4,7 +4,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 // Root CSS
-import 'semantic-ui-css/semantic.css';
+// import 'semantic-ui-css/semantic.css';
 import '@/index.scss';
 
 const root = ReactDOM.createRoot(

@@ -1,5 +1,8 @@
 // Top level imports
-import { ComponentPropsWithoutRef, ReactElement, ReactNode } from 'react';
+import { ComponentPropsWithoutRef, ReactElement, ReactNode, useRef } from 'react';
+
+// react-aria
+import { useButton } from 'react-aria';
 
 // Semantic UI
 import { Button as SemanticButton, SemanticCOLORS } from 'semantic-ui-react';
@@ -16,8 +19,13 @@ export default function Button({
     color = 'green',
     ...rest
 }: IButtonProps): ReactElement {
+    const ref = useRef(null);
+    const { buttonProps } = useButton({}, ref);
+
     return (
         <SemanticButton
+            {...buttonProps}        
+            ref={ref}
             color={color}
             {...rest}
         >
