@@ -43,15 +43,15 @@ export default function Sidebar({
             >
                 <Menu.Item as='a'>
                     <Icon name='home' />
-                    Home
+                    Contacts
                 </Menu.Item>
                 <Menu.Item as='a'>
                     <Icon name='gamepad' />
-                    Games
+                    Frequently contacted
                 </Menu.Item>
                 <Menu.Item as='a'>
                     <Icon name='camera' />
-                    Channels
+                    Merge & fix
                 </Menu.Item>
             </SemSidebar>
 
